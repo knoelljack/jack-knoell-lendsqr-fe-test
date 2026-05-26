@@ -1,0 +1,52 @@
+@use '@/styles/variables' as v;
+@use '@/styles/typography' as t;
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: v.$space-6;
+  background: v.$color-background;
+}
+
+.content {
+  max-width: 480px;
+  text-align: center;
+}
+
+.code {
+  font-size: 64px;
+  font-weight: v.$font-weight-bold;
+  color: v.$color-primary;
+  letter-spacing: -2px;
+  margin-bottom: v.$space-2;
+}
+
+.title {
+  @extend %text-heading-1;
+  margin-bottom: v.$space-3;
+}
+
+.body {
+  @extend %text-body;
+  margin-bottom: v.$space-6;
+}
+
+.action {
+  display: inline-block;
+  padding: v.$space-3 v.$space-6;
+  background: v.$color-primary;
+  color: v.$color-surface;
+  border-radius: v.$radius-sm;
+  font-weight: v.$font-weight-semibold;
+  font-size: v.$font-size-md;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 120ms ease;
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, #{v.$color-primary} 90%, black);
+  }
+}
