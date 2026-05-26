@@ -1,0 +1,61 @@
+@use 'variables' as v;
+
+%text-heading-1 {
+  font-size: v.$font-size-2xl;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-tight;
+  color: v.$color-text-strong;
+  letter-spacing: -0.4px;
+}
+
+%text-heading-2 {
+  font-size: v.$font-size-xl;
+  font-weight: v.$font-weight-medium;
+  line-height: v.$line-height-tight;
+  color: v.$color-text-strong;
+}
+
+%text-heading-3 {
+  font-size: v.$font-size-md;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+}
+
+%text-body {
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-regular;
+  line-height: v.$line-height-base;
+  color: v.$color-text-default;
+}
+
+%text-body-strong {
+  @extend %text-body;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+}
+
+%text-caption {
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-regular;
+  color: v.$color-text-muted;
+  letter-spacing: 0.2px;
+}
+
+%text-overline {
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: v.$color-text-muted;
+}
+
+%link {
+  color: v.$color-primary;
+  font-weight: v.$font-weight-semibold;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
