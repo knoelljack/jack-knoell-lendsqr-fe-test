@@ -31,7 +31,6 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>({
-    mode: 'onBlur',
     defaultValues: { email: '', password: '' },
   });
 
@@ -54,7 +53,6 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
         type="email"
         placeholder="Email"
         autoComplete="email"
-        autoFocus
         error={errors.email?.message}
         {...register('email', {
           required: 'Email is required',
