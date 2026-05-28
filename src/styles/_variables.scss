@@ -64,6 +64,7 @@ $font-size-lg: 20px;
 $font-size-xl: 22px;
 $font-size-2xl: 24px;
 $font-size-3xl: 28px;
+$font-size-hero: 32px;
 
 $font-weight-regular: 400;
 $font-weight-medium: 500;
@@ -77,6 +78,10 @@ $line-height-base: 1.5;
 $sidebar-width: 283px;
 $sidebar-width-collapsed: 88px;
 $topbar-height: 100px;
+
+// ---- Controls ----
+$control-height: 50px;
+$control-height-lg: 60px;
 
 // ---- Z-index ----
 $z-sidebar: 20;
