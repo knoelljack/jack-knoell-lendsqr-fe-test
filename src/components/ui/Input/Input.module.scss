@@ -1,0 +1,72 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-1;
+  width: 100%;
+}
+
+.label {
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  height: v.$control-height;
+  padding: 0 v.$space-4;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-sm;
+  background: v.$color-surface;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+
+  &:focus-within {
+    border-color: v.$color-primary;
+    box-shadow: 0 0 0 2px rgba(#39cdcc, 0.15);
+  }
+}
+
+.field_invalid {
+  border-color: v.$color-danger;
+
+  &:focus-within {
+    border-color: v.$color-danger;
+    box-shadow: 0 0 0 2px rgba(#e4033b, 0.15);
+  }
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: v.$font-size-base;
+  color: v.$color-text-strong;
+
+  &::placeholder {
+    color: v.$color-text-muted;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.trailing {
+  display: flex;
+  align-items: center;
+  margin-left: v.$space-3;
+  white-space: nowrap;
+}
+
+.error {
+  margin-top: v.$space-1;
+  font-size: v.$font-size-sm;
+  color: v.$color-danger;
+}
