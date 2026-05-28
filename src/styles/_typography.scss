@@ -1,5 +1,13 @@
 @use 'variables' as v;
 
+%text-hero {
+  font-size: v.$font-size-hero;
+  font-weight: v.$font-weight-bold;
+  line-height: v.$line-height-tight;
+  color: v.$color-text-strong;
+  letter-spacing: -0.5px;
+}
+
 %text-heading-1 {
   font-size: v.$font-size-2xl;
   font-weight: v.$font-weight-medium;

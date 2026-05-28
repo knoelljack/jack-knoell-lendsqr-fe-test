@@ -1,0 +1,23 @@
+@use '@/styles/variables' as v;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-6;
+  width: 100%;
+}
+
+.forgot {
+  align-self: flex-start;
+  margin-top: -#{v.$space-3};
+  color: v.$color-primary;
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}

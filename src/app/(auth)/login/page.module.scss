@@ -1,0 +1,99 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+@use '@/styles/typography' as t;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: v.$color-surface;
+
+  @include m.respond-to(lg) {
+    flex-direction: row;
+  }
+}
+
+.illustrationPane {
+  display: none;
+  flex-direction: column;
+  padding: v.$space-12 v.$space-16;
+  background: v.$color-surface;
+  box-shadow: v.$shadow-md;
+
+  @include m.respond-to(lg) {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.logoBar {
+  display: flex;
+  align-items: center;
+}
+
+.illustrationFrame {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: v.$space-10 0;
+}
+
+.illustration {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.formPane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: v.$space-6;
+  min-height: 100vh;
+
+  @include m.respond-to(md) {
+    padding: v.$space-10;
+  }
+
+  @include m.respond-to(lg) {
+    align-items: center;
+    justify-content: center;
+    padding: v.$space-16 v.$space-12;
+    flex: 0 0 44%;
+    min-width: 480px;
+    min-height: auto;
+  }
+}
+
+.mobileLogoBar {
+  display: flex;
+  align-items: center;
+  margin-bottom: v.$space-10;
+
+  @include m.respond-to(lg) {
+    display: none;
+  }
+}
+
+.formContent {
+  width: 100%;
+  max-width: 447px;
+  margin: 0 auto;
+
+  @include m.respond-to(lg) {
+    margin: 0;
+  }
+}
+
+.title {
+  @extend %text-hero;
+  margin-bottom: v.$space-2;
+}
+
+.subtitle {
+  @extend %text-body;
+  margin-bottom: v.$space-10;
+  font-size: v.$font-size-md;
+}

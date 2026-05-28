@@ -1,0 +1,73 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-2;
+  padding: 0 v.$space-6;
+  border: 0;
+  border-radius: v.$radius-md;
+  font-family: inherit;
+  font-weight: v.$font-weight-semibold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, opacity 120ms ease;
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.size_md {
+  height: v.$control-height;
+  font-size: v.$font-size-sm;
+}
+
+.size_lg {
+  height: v.$control-height-lg;
+  font-size: v.$font-size-base;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.variant_primary {
+  background: v.$color-primary;
+  color: v.$color-surface;
+
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    background: color-mix(in srgb, #{v.$color-primary} 92%, black);
+  }
+}
+
+.variant_secondary {
+  background: transparent;
+  color: v.$color-primary;
+  border: 1px solid v.$color-primary;
+
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    background: v.$color-primary-hover;
+  }
+}
+
+.variant_ghost {
+  background: transparent;
+  color: v.$color-text-default;
+
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    background: v.$color-primary-hover;
+    color: v.$color-text-strong;
+  }
+}
