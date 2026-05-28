@@ -1,10 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/Button/Button';
 import { Input } from '@/components/ui/Input/Input';
 import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
+import {
+  AUTH_COOKIE_MAX_AGE,
+  AUTH_COOKIE_NAME,
+  POST_LOGIN_ROUTE,
+} from '@/constants/auth';
 import styles from './LoginForm.module.scss';
 
 export type LoginFormValues = {
@@ -19,6 +25,7 @@ type LoginFormProps = {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function LoginForm({ onSubmit }: LoginFormProps) {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -28,11 +35,20 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
     defaultValues: { email: '', password: '' },
   });
 
+  const submit = async (values: LoginFormValues) => {
+    if (onSubmit) {
+      await onSubmit(values);
+      return;
+    }
+    document.cookie = `${AUTH_COOKIE_NAME}=1; path=/; max-age=${AUTH_COOKIE_MAX_AGE}; SameSite=Lax`;
+    router.push(POST_LOGIN_ROUTE);
+  };
+
   return (
     <form
       noValidate
       className={styles.form}
-      onSubmit={handleSubmit((values) => onSubmit?.(values))}
+      onSubmit={handleSubmit(submit)}
     >
       <Input
         type="email"
