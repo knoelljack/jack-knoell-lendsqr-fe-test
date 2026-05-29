@@ -1,0 +1,37 @@
+@use '@/styles/variables' as v;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  padding: v.$space-2 v.$space-3;
+  border-radius: v.$radius-pill;
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-regular;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.variant_active {
+  background: rgba(#39cd62, 0.1);
+  color: v.$color-status-active;
+}
+
+.variant_inactive {
+  background: rgba(#545f7d, 0.06);
+  color: v.$color-status-inactive;
+}
+
+.variant_pending {
+  background: rgba(#e9b200, 0.1);
+  color: v.$color-status-pending;
+}
+
+.variant_blacklisted {
+  background: rgba(#e4033b, 0.1);
+  color: v.$color-status-blacklisted;
+}
+
+.variant_neutral {
+  background: rgba(#545f7d, 0.06);
+  color: v.$color-text-default;
+}
