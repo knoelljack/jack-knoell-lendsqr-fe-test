@@ -5,6 +5,7 @@ export type IconName =
   | 'audit-logs'
   | 'bell'
   | 'briefcase'
+  | 'caret-down'
   | 'chevron-down'
   | 'decision-models'
   | 'fees-and-charges'

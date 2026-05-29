@@ -72,14 +72,15 @@
   align-items: center;
   gap: v.$space-3;
   padding: v.$space-3 v.$space-8;
-  color: v.$color-text-default;
+  color: v.$color-text-strong;
   font-size: v.$font-size-md;
   font-weight: v.$font-weight-regular;
-  transition: background-color 120ms ease, color 120ms ease;
+  opacity: 0.6;
+  transition: background-color 120ms ease, opacity 120ms ease;
 
   &:hover {
     background: v.$color-primary-hover;
-    color: v.$color-text-strong;
+    opacity: 1;
   }
 
   &:focus-visible {
@@ -90,7 +91,7 @@
 
 .item_active {
   background: v.$color-primary-hover;
-  color: v.$color-text-strong;
+  opacity: 1;
 
   &::before {
     content: '';

@@ -25,7 +25,7 @@ export function Sidebar() {
       >
         <Icon name="briefcase" />
         <span className={styles.switchOrgLabel}>Switch Organization</span>
-        <Icon name="chevron-down" />
+        <Icon name="caret-down" size={14} />
       </button>
 
       <nav aria-label="Main navigation" className={styles.nav}>
