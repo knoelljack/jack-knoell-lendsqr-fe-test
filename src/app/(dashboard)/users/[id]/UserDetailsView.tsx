@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
+import { GeneralDetailsPanel } from '@/components/users/GeneralDetailsPanel/GeneralDetailsPanel';
 import { UserDetailsHeader } from '@/components/users/UserDetailsHeader/UserDetailsHeader';
 import {
   UserSummaryCard,
@@ -71,6 +72,9 @@ export function UserDetailsView({ userId }: UserDetailsViewProps) {
         activeTab={activeTab}
         onTabChange={setActiveTab}
       />
+      {activeTab === 'general-details' ? (
+        <GeneralDetailsPanel user={user} />
+      ) : null}
     </article>
   );
 }

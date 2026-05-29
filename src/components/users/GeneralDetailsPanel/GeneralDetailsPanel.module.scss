@@ -1,0 +1,80 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+  background: v.$color-surface;
+  border: 1px solid v.$color-divider;
+  border-radius: v.$radius-sm;
+  box-shadow: v.$shadow-sm;
+  padding: v.$space-8;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-6;
+  padding-bottom: v.$space-8;
+  border-bottom: 1px solid v.$color-divider;
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.sectionTitle {
+  font-size: v.$font-size-md;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6 v.$space-8;
+
+  @include m.respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.respond-to(lg) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+  min-width: 0;
+}
+
+.fieldLabel {
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-regular;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  color: v.$color-text-default;
+}
+
+.fieldValue {
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+  word-break: break-word;
+}
+
+.guarantorDivider {
+  grid-column: 1 / -1;
+  margin: v.$space-4 0;
+  border: 0;
+  border-top: 1px solid v.$color-divider;
+}
