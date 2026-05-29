@@ -1,4 +1,5 @@
 import { Icon } from '@/components/ui/Icon/Icon';
+import { RowActionsMenu } from '@/components/users/RowActionsMenu/RowActionsMenu';
 import { StatusBadge } from '@/components/users/StatusBadge/StatusBadge';
 import type { User } from '@/types/user';
 import styles from './UsersTable.module.scss';
@@ -7,6 +8,8 @@ type UsersTableProps = {
   users: User[];
   emptyMessage?: string;
   onFilterClick?: () => void;
+  onBlacklist?: (user: User) => void;
+  onActivate?: (user: User) => void;
 };
 
 const DATE_FORMATTER = new Intl.DateTimeFormat('en-US', {
@@ -39,6 +42,8 @@ export function UsersTable({
   users,
   emptyMessage = 'No users match the current filters.',
   onFilterClick,
+  onBlacklist,
+  onActivate,
 }: UsersTableProps) {
   return (
     <div className={styles.scroll}>
@@ -88,7 +93,13 @@ export function UsersTable({
                 <td className={styles.cell}>
                   <StatusBadge status={user.status} />
                 </td>
-                <td className={styles.cellActions} />
+                <td className={styles.cellActions}>
+                  <RowActionsMenu
+                    user={user}
+                    onBlacklist={onBlacklist}
+                    onActivate={onActivate}
+                  />
+                </td>
               </tr>
             ))
           )}
