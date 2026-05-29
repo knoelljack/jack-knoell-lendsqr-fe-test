@@ -2,8 +2,10 @@
 
 A take-home build of the Lendsqr admin console covering Login, Dashboard, Users list, and User Details. Implemented in **Next.js 16 + TypeScript + SCSS** against the [Figma design](https://www.figma.com/file/ZKILoCoIoy1IESdBpq3GNC/Frontend-Testing).
 
-> **Live URL:** _added in the final deploy commit_
+> **Live URL:** [jack-knoell-lendsqr-fe-test.vercel.app](https://jack-knoell-lendsqr-fe-test.vercel.app)
 > **Source:** [github.com/knoelljack/jack-knoell-lendsqr-fe-test](https://github.com/knoelljack/jack-knoell-lendsqr-fe-test)
+>
+> Log in with any well-formed email + 6+ character password to enter the dashboard.
 
 ---
 
