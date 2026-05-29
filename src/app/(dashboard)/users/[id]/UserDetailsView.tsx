@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
+import { EmptyState } from '@/components/ui/EmptyState/EmptyState';
 import { GeneralDetailsPanel } from '@/components/users/GeneralDetailsPanel/GeneralDetailsPanel';
 import { UserDetailsHeader } from '@/components/users/UserDetailsHeader/UserDetailsHeader';
 import {
+  DETAILS_TABS,
   UserSummaryCard,
   type DetailsTabId,
 } from '@/components/users/UserSummaryCard/UserSummaryCard';
@@ -74,7 +76,12 @@ export function UserDetailsView({ userId }: UserDetailsViewProps) {
       />
       {activeTab === 'general-details' ? (
         <GeneralDetailsPanel user={user} />
-      ) : null}
+      ) : (
+        <EmptyState
+          title={DETAILS_TABS.find((tab) => tab.id === activeTab)?.label ?? ''}
+          body="This section is out of scope for the assessment."
+        />
+      )}
     </article>
   );
 }
