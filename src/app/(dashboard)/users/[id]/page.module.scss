@@ -1,0 +1,21 @@
+@use '@/styles/variables' as v;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-8;
+}
+
+.loadingState,
+.errorState {
+  padding: v.$space-10;
+  text-align: center;
+  background: v.$color-surface;
+  border: 1px solid v.$color-divider;
+  border-radius: v.$radius-sm;
+  color: v.$color-text-muted;
+}
+
+.errorState {
+  color: v.$color-danger;
+}

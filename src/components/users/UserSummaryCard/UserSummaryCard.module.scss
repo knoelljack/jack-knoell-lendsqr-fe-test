@@ -1,0 +1,147 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  background: v.$color-surface;
+  border: 1px solid v.$color-divider;
+  border-radius: v.$radius-sm;
+  box-shadow: v.$shadow-sm;
+  padding: v.$space-8 v.$space-8 0;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: v.$space-8;
+  padding-bottom: v.$space-8;
+
+  @include m.respond-below(lg) {
+    gap: v.$space-6;
+  }
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: v.$space-5;
+  min-width: 0;
+}
+
+.identityText {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-1;
+  min-width: 0;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(#213f7d, 0.16);
+  color: v.$color-primary-strong;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: v.$font-size-xl;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+  margin: 0;
+}
+
+.userId {
+  font-size: v.$font-size-base;
+  color: v.$color-text-muted;
+}
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  background: v.$color-divider;
+
+  @include m.respond-below(md) {
+    display: none;
+  }
+}
+
+.tier,
+.bank {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+}
+
+.tierLabel {
+  font-size: v.$font-size-base;
+  color: v.$color-text-default;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-1;
+}
+
+.balance {
+  font-size: v.$font-size-xl;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+}
+
+.bankInfo {
+  font-size: v.$font-size-sm;
+  color: v.$color-text-strong;
+}
+
+.tabs {
+  margin-top: v.$space-6;
+}
+
+.tabList {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: v.$space-4;
+  overflow-x: auto;
+}
+
+.tab {
+  position: relative;
+  padding: v.$space-4 0;
+  background: transparent;
+  border: 0;
+  color: v.$color-text-strong;
+  font-family: inherit;
+  font-size: v.$font-size-md;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+    outline-offset: -2px;
+    border-radius: v.$radius-sm;
+  }
+}
+
+.tab_active {
+  color: v.$color-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 2px;
+    background: v.$color-primary;
+  }
+}
