@@ -1,0 +1,233 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  height: v.$topbar-height;
+  padding: 0 v.$space-5;
+  background: v.$color-surface;
+  box-shadow: v.$shadow-sm;
+  position: relative;
+  z-index: v.$z-topbar;
+
+  @include m.respond-to(md) {
+    padding: 0 v.$space-8;
+    gap: v.$space-8;
+  }
+
+  @include m.respond-to(lg) {
+    padding: 0 v.$space-12 0 0;
+    gap: v.$space-12;
+  }
+}
+
+.leadingGroup {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  flex-shrink: 0;
+
+  @include m.respond-to(lg) {
+    width: v.$sidebar-width;
+    padding-left: v.$space-8;
+  }
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+
+  &:focus-visible {
+    @include m.focus-ring;
+    border-radius: v.$radius-sm;
+  }
+}
+
+.menuButton {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+
+  @include m.respond-to(lg) {
+    display: none;
+  }
+}
+
+.menuBar {
+  display: block;
+  height: 2px;
+  background: v.$color-text-strong;
+  border-radius: 2px;
+}
+
+.search {
+  display: none;
+  flex: 1;
+  max-width: 520px;
+  height: 40px;
+
+  @include m.respond-to(md) {
+    display: flex;
+  }
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 v.$space-4;
+  border: v.$input-border-width solid v.$color-border;
+  border-right: 0;
+  border-top-left-radius: v.$input-radius * 1.6;
+  border-bottom-left-radius: v.$input-radius * 1.6;
+  background: v.$color-surface;
+  font-family: inherit;
+  font-size: v.$font-size-base;
+  color: v.$color-text-strong;
+
+  &::placeholder {
+    color: v.$color-text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: v.$color-primary;
+  }
+}
+
+.searchButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 100%;
+  background: v.$color-primary;
+  border: 0;
+  border-top-right-radius: v.$input-radius * 1.6;
+  border-bottom-right-radius: v.$input-radius * 1.6;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+
+  img {
+    filter: brightness(0) invert(1);
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, #{v.$color-primary} 92%, black);
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+}
+
+.trailingGroup {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  margin-left: auto;
+  flex-shrink: 0;
+
+  @include m.respond-to(md) {
+    gap: v.$space-6;
+  }
+}
+
+.docsLink {
+  display: none;
+  color: v.$color-text-strong;
+  font-size: v.$font-size-md;
+  text-decoration: underline;
+
+  &:hover,
+  &:focus-visible {
+    color: v.$color-primary;
+  }
+
+  @include m.respond-to(md) {
+    display: inline;
+  }
+}
+
+.iconButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: v.$radius-pill;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: v.$color-primary-hover;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+
+  @include m.respond-to(md) {
+    display: inline-flex;
+  }
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  padding: v.$space-1;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: v.$color-text-strong;
+  font-family: inherit;
+  font-size: v.$font-size-md;
+
+  &:hover,
+  &:focus-visible {
+    color: v.$color-primary-strong;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+    border-radius: v.$radius-sm;
+  }
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: v.$radius-pill;
+  background: linear-gradient(135deg, v.$color-primary, v.$color-primary-strong);
+  color: v.$color-surface;
+  font-weight: v.$font-weight-semibold;
+  font-size: v.$font-size-md;
+}
+
+.profileName {
+  display: none;
+
+  @include m.respond-to(md) {
+    display: inline;
+  }
+}

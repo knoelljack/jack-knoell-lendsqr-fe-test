@@ -1,0 +1,111 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  width: v.$sidebar-width;
+  flex-shrink: 0;
+  background: v.$color-surface;
+  padding-top: v.$space-6;
+  padding-bottom: v.$space-12;
+  box-shadow: v.$shadow-sm;
+  overflow-y: auto;
+}
+
+.switchOrg {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  width: 100%;
+  padding: v.$space-2 v.$space-8;
+  background: transparent;
+  border: 0;
+  color: v.$color-text-strong;
+  font-family: inherit;
+  font-size: v.$font-size-md;
+  font-weight: v.$font-weight-regular;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: v.$space-4;
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+}
+
+.switchOrgLabel {
+  flex: 1;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-5;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-1;
+}
+
+.heading {
+  margin: 0 0 v.$space-2;
+  padding: 0 v.$space-8;
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: v.$color-text-default;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  padding: v.$space-3 v.$space-8;
+  color: v.$color-text-strong;
+  font-size: v.$font-size-md;
+  font-weight: v.$font-weight-regular;
+  opacity: 0.6;
+  transition: background-color 120ms ease, opacity 120ms ease;
+
+  &:hover {
+    background: v.$color-primary-hover;
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+    outline-offset: -2px;
+  }
+}
+
+.item_active {
+  background: v.$color-primary-hover;
+  opacity: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: v.$color-primary;
+  }
+}
+
+.itemIcon {
+  flex-shrink: 0;
+}
+
+.itemLabel {
+  flex: 1;
+}

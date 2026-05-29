@@ -1,0 +1,66 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: v.$color-background;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.sidebarWrap {
+  position: fixed;
+  inset: v.$topbar-height 0 0 0;
+  width: v.$sidebar-width;
+  max-width: 85vw;
+  z-index: v.$z-sidebar;
+  transform: translateX(-100%);
+  transition: transform 240ms ease;
+
+  @include m.respond-to(lg) {
+    position: sticky;
+    top: 0;
+    inset: auto;
+    width: v.$sidebar-width;
+    max-width: none;
+    transform: none;
+    align-self: flex-start;
+    max-height: calc(100vh - #{v.$topbar-height});
+  }
+}
+
+.sidebarWrap_open {
+  transform: translateX(0);
+}
+
+.backdrop {
+  position: fixed;
+  inset: v.$topbar-height 0 0 0;
+  background: rgba(#0a162f, 0.4);
+  z-index: v.$z-sidebar - 1;
+
+  @include m.respond-to(lg) {
+    display: none;
+  }
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: v.$space-6;
+
+  @include m.respond-to(md) {
+    padding: v.$space-8;
+  }
+
+  @include m.respond-to(lg) {
+    padding: v.$space-10 v.$space-12;
+  }
+}

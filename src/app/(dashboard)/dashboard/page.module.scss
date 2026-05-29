@@ -1,0 +1,26 @@
+@use '@/styles/variables' as v;
+@use '@/styles/typography' as t;
+
+.root {
+  max-width: 720px;
+}
+
+.title {
+  @extend %text-hero;
+  margin-bottom: v.$space-4;
+}
+
+.subtitle {
+  @extend %text-body;
+  font-size: v.$font-size-md;
+}
+
+.link {
+  color: v.$color-primary;
+  font-weight: v.$font-weight-semibold;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
