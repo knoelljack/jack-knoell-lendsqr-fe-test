@@ -2,14 +2,22 @@ import cn from 'classnames';
 import styles from './Icon.module.scss';
 
 export type IconName =
+  | 'activate-user'
   | 'audit-logs'
   | 'bell'
+  | 'blacklist-user'
   | 'briefcase'
+  | 'calendar'
+  | 'card-active-users'
+  | 'card-users'
+  | 'card-users-with-loans'
+  | 'card-users-with-savings'
   | 'caret-down'
   | 'chevron-down'
   | 'decision-models'
   | 'fees-and-charges'
   | 'fees-and-pricing'
+  | 'filter'
   | 'guarantor'
   | 'home'
   | 'karma'
@@ -25,6 +33,7 @@ export type IconName =
   | 'settlements'
   | 'transactions'
   | 'users'
+  | 'view'
   | 'whitelist';
 
 type IconProps = {

@@ -1,0 +1,108 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: v.$space-4;
+  flex-wrap: wrap;
+}
+
+.srOnly {
+  @include m.visually-hidden;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: v.$space-2;
+  font-size: v.$font-size-sm;
+  color: v.$color-text-default;
+}
+
+.selectLabel {
+  display: inline-flex;
+}
+
+.select {
+  appearance: none;
+  background-color: rgba(#213f7d, 0.1);
+  background-image: url('/icons/caret-down.svg');
+  background-repeat: no-repeat;
+  background-position: right v.$space-2 center;
+  background-size: 10px;
+  border: 0;
+  border-radius: v.$radius-sm;
+  padding: v.$space-1 v.$space-6 v.$space-1 v.$space-3;
+  font-family: inherit;
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-semibold;
+  color: v.$color-text-strong;
+  cursor: pointer;
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: v.$space-1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 v.$space-1;
+  background: transparent;
+  border: 0;
+  border-radius: v.$radius-sm;
+  color: v.$color-text-muted;
+  font-family: inherit;
+  font-size: v.$font-size-base;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+
+  &:hover:not(:disabled) {
+    color: v.$color-text-strong;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+  }
+}
+
+.pageButton_active {
+  color: v.$color-text-strong;
+  font-weight: v.$font-weight-semibold;
+}
+
+.pageButton_nav {
+  width: 24px;
+  background: rgba(#213f7d, 0.1);
+  color: v.$color-text-strong;
+  font-size: v.$font-size-md;
+  line-height: 1;
+
+  &:hover:not(:disabled) {
+    background: rgba(#213f7d, 0.18);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.ellipsis {
+  padding: 0 v.$space-1;
+  color: v.$color-text-muted;
+}

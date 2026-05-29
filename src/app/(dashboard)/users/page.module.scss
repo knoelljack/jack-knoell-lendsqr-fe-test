@@ -1,0 +1,52 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+@use '@/styles/typography' as t;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-10;
+}
+
+.title {
+  @extend %text-heading-1;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-6;
+
+  @include m.respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.respond-to(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tableSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+}
+
+.filterPopover {
+  position: absolute;
+  top: 60px;
+  left: v.$space-3;
+  z-index: v.$z-popover;
+}
+
+.loading,
+.error {
+  padding: v.$space-10 v.$space-6;
+  text-align: center;
+  color: v.$color-text-muted;
+}
+
+.error {
+  color: v.$color-danger;
+}

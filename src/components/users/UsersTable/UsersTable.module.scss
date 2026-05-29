@@ -1,0 +1,97 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.scroll {
+  overflow-x: auto;
+  background: v.$color-surface;
+  border: 1px solid v.$color-divider;
+  border-radius: v.$radius-sm;
+  box-shadow: v.$shadow-sm;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: inherit;
+}
+
+.caption {
+  @include m.visually-hidden;
+}
+
+.head {
+  text-align: left;
+}
+
+.th,
+.thActions {
+  padding: v.$space-4 v.$space-6;
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: v.$color-text-default;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.thInner {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2;
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.7;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+    border-radius: v.$radius-sm;
+  }
+}
+
+.thActions {
+  width: 48px;
+}
+
+.row {
+  border-top: 1px solid v.$color-divider;
+
+  &:hover {
+    background: rgba(#39cdcc, 0.02);
+  }
+}
+
+.cell {
+  padding: v.$space-4 v.$space-6;
+  font-size: v.$font-size-base;
+  color: v.$color-text-default;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.cellActions {
+  padding: v.$space-4 v.$space-6;
+  width: 48px;
+  vertical-align: middle;
+}
+
+.empty {
+  padding: v.$space-12 v.$space-6;
+  text-align: center;
+  color: v.$color-text-muted;
+  font-size: v.$font-size-base;
+}
