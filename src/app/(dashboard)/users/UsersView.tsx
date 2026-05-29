@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Pagination } from '@/components/users/Pagination/Pagination';
 import { StatCard } from '@/components/users/StatCard/StatCard';
 import { UsersTable } from '@/components/users/UsersTable/UsersTable';
 import { fetchUsers } from '@/lib/api/users';
@@ -38,13 +39,18 @@ const STAT_CARDS = [
   },
 ] as const;
 
+const INITIAL_PER_PAGE = 10;
+
 export function UsersView({ stats }: UsersViewProps) {
   const [data, setData] = useState<UsersListResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(INITIAL_PER_PAGE);
 
   useEffect(() => {
     let cancelled = false;
-    fetchUsers({ page: 1, perPage: 10 })
+    setError(null);
+    fetchUsers({ page, perPage })
       .then((response) => {
         if (!cancelled) setData(response);
       })
@@ -54,16 +60,18 @@ export function UsersView({ stats }: UsersViewProps) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [page, perPage]);
+
+  const handlePerPageChange = (next: number) => {
+    setPerPage(next);
+    setPage(1);
+  };
 
   return (
     <div className={styles.root}>
       <h1 className={styles.title}>Users</h1>
 
-      <section
-        aria-label="User statistics"
-        className={styles.statsGrid}
-      >
+      <section aria-label="User statistics" className={styles.statsGrid}>
         {STAT_CARDS.map((card) => (
           <StatCard
             key={card.statKey}
@@ -83,7 +91,16 @@ export function UsersView({ stats }: UsersViewProps) {
         ) : !data ? (
           <p className={styles.loading}>Loading users…</p>
         ) : (
-          <UsersTable users={data.users} />
+          <>
+            <UsersTable users={data.users} />
+            <Pagination
+              page={data.page}
+              perPage={data.perPage}
+              total={data.total}
+              onPageChange={setPage}
+              onPerPageChange={handlePerPageChange}
+            />
+          </>
         )}
       </section>
     </div>
