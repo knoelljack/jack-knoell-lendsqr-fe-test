@@ -1,0 +1,40 @@
+@use '@/styles/variables' as v;
+
+.root {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    rgba(#213f7d, 0.05) 25%,
+    rgba(#213f7d, 0.08) 50%,
+    rgba(#213f7d, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite ease-in-out;
+}
+
+.rounded_sm {
+  border-radius: v.$radius-sm;
+}
+
+.rounded_md {
+  border-radius: v.$radius-md;
+}
+
+.rounded_pill {
+  border-radius: v.$radius-pill;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    animation: none;
+  }
+}

@@ -8,6 +8,7 @@ import {
 import { Pagination } from '@/components/users/Pagination/Pagination';
 import { StatCard } from '@/components/users/StatCard/StatCard';
 import { UsersTable } from '@/components/users/UsersTable/UsersTable';
+import { UsersTableSkeleton } from '@/components/users/UsersTable/UsersTableSkeleton';
 import { fetchUsers } from '@/lib/api/users';
 import type { UsersListResponse, UsersStats } from '@/types/user';
 import styles from './page.module.scss';
@@ -129,7 +130,7 @@ export function UsersView({ stats }: UsersViewProps) {
             Failed to load users: {error}
           </p>
         ) : !data ? (
-          <p className={styles.loading}>Loading users…</p>
+          <UsersTableSkeleton rows={perPage} />
         ) : (
           <>
             <UsersTable
