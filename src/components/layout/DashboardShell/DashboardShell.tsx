@@ -34,6 +34,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
       <div className={styles.body}>
         {drawerOpen ? (
           <div
+            data-testid="drawer-backdrop"
             className={styles.backdrop}
             onClick={() => setDrawerOpen(false)}
             aria-hidden="true"
