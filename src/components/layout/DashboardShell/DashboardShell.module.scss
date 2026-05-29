@@ -1,0 +1,41 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: v.$color-background;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.sidebarWrap {
+  display: none;
+
+  @include m.respond-to(lg) {
+    display: block;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    max-height: calc(100vh - #{v.$topbar-height});
+  }
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: v.$space-6;
+
+  @include m.respond-to(md) {
+    padding: v.$space-8;
+  }
+
+  @include m.respond-to(lg) {
+    padding: v.$space-10 v.$space-12;
+  }
+}
