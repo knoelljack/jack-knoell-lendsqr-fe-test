@@ -3,6 +3,10 @@
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import { UserDetailsHeader } from '@/components/users/UserDetailsHeader/UserDetailsHeader';
+import {
+  UserSummaryCard,
+  type DetailsTabId,
+} from '@/components/users/UserSummaryCard/UserSummaryCard';
 import { ApiError, fetchUserById } from '@/lib/api/users';
 import { getUserFromDb } from '@/lib/db/indexedDB';
 import type { User } from '@/types/user';
@@ -15,6 +19,7 @@ type UserDetailsViewProps = {
 export function UserDetailsView({ userId }: UserDetailsViewProps) {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<DetailsTabId>('general-details');
 
   useEffect(() => {
     let cancelled = false;
@@ -61,6 +66,11 @@ export function UserDetailsView({ userId }: UserDetailsViewProps) {
   return (
     <article className={styles.root}>
       <UserDetailsHeader user={user} />
+      <UserSummaryCard
+        user={user}
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+      />
     </article>
   );
 }
