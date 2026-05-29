@@ -11,8 +11,8 @@ import {
   type DetailsTabId,
 } from '@/components/users/UserSummaryCard/UserSummaryCard';
 import { ApiError, fetchUserById } from '@/lib/api/users';
-import { getUserFromDb } from '@/lib/db/indexedDB';
-import type { User } from '@/types/user';
+import { getUserFromDb, saveUser } from '@/lib/db/indexedDB';
+import type { User, UserStatus } from '@/types/user';
 import styles from './page.module.scss';
 
 type UserDetailsViewProps = {
@@ -66,9 +66,19 @@ export function UserDetailsView({ userId }: UserDetailsViewProps) {
     );
   }
 
+  const updateStatus = async (status: UserStatus) => {
+    const updated: User = { ...user, status };
+    setUser(updated);
+    await saveUser(updated);
+  };
+
   return (
     <article className={styles.root}>
-      <UserDetailsHeader user={user} />
+      <UserDetailsHeader
+        user={user}
+        onBlacklist={() => void updateStatus('Blacklisted')}
+        onActivate={() => void updateStatus('Active')}
+      />
       <UserSummaryCard
         user={user}
         activeTab={activeTab}
