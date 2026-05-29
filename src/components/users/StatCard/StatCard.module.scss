@@ -3,7 +3,7 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: v.$space-3;
+  gap: v.$space-1;
   padding: v.$space-5 v.$space-6;
   background: v.$color-surface;
   border: 1px solid v.$color-divider;
@@ -19,7 +19,7 @@
   height: 40px;
   border-radius: v.$radius-pill;
   background: color-mix(in srgb, var(--accent) 16%, transparent);
-  margin-bottom: v.$space-2;
+  margin-bottom: v.$space-3;
 }
 
 .label {
