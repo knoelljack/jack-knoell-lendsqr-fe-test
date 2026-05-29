@@ -4,6 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { Icon } from '@/components/ui/Icon/Icon';
+import { saveUser } from '@/lib/db/indexedDB';
 import type { User } from '@/types/user';
 import styles from './RowActionsMenu.module.scss';
 
@@ -106,7 +107,10 @@ export function RowActionsMenu({
                 role="menuitem"
                 className={styles.item}
                 href={`/users/${encodeURIComponent(user.id)}`}
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false);
+                  void saveUser(user);
+                }}
               >
                 <Icon name="view" size={14} />
                 <span>View Details</span>
