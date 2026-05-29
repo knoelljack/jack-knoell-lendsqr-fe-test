@@ -1,11 +1,6 @@
 @use '@/styles/variables' as v;
 @use '@/styles/mixins' as m;
 
-.root {
-  position: relative;
-  display: inline-flex;
-}
-
 .trigger {
   display: inline-flex;
   flex-direction: column;
@@ -35,13 +30,10 @@
 
 .menu {
   position: absolute;
-  top: 100%;
-  right: 0;
   z-index: v.$z-popover;
   display: flex;
   flex-direction: column;
   min-width: 180px;
-  margin-top: v.$space-2;
   padding: v.$space-3;
   background: v.$color-surface;
   border: 1px solid v.$color-divider;
@@ -59,7 +51,7 @@
   border-radius: v.$radius-sm;
   color: v.$color-text-default;
   font-family: inherit;
-  font-size: v.$font-size-sm;
+  font-size: v.$font-size-base;
   text-align: left;
   white-space: nowrap;
   cursor: pointer;
