@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
+import { UserDetailsHeader } from '@/components/users/UserDetailsHeader/UserDetailsHeader';
 import { ApiError, fetchUserById } from '@/lib/api/users';
 import { getUserFromDb } from '@/lib/db/indexedDB';
 import type { User } from '@/types/user';
@@ -59,9 +60,7 @@ export function UserDetailsView({ userId }: UserDetailsViewProps) {
 
   return (
     <article className={styles.root}>
-      <h1>{user.username}</h1>
-      <p>Status: {user.status}</p>
-      <p>Email: {user.email}</p>
+      <UserDetailsHeader user={user} />
     </article>
   );
 }
