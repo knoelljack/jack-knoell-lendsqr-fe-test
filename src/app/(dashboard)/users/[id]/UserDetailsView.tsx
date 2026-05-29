@@ -14,6 +14,7 @@ import { ApiError, fetchUserById } from '@/lib/api/users';
 import { getUserFromDb, saveUser } from '@/lib/db/indexedDB';
 import type { User, UserStatus } from '@/types/user';
 import styles from './page.module.scss';
+import { UserDetailsSkeleton } from './UserDetailsSkeleton';
 
 type UserDetailsViewProps = {
   userId: string;
@@ -59,11 +60,7 @@ export function UserDetailsView({ userId }: UserDetailsViewProps) {
   }
 
   if (!user) {
-    return (
-      <section className={styles.loadingState} aria-busy="true">
-        <p>Loading user details…</p>
-      </section>
-    );
+    return <UserDetailsSkeleton />;
   }
 
   const updateStatus = async (status: UserStatus) => {
