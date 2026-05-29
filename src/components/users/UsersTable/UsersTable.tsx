@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon/Icon';
 import { StatusBadge } from '@/components/users/StatusBadge/StatusBadge';
 import type { User } from '@/types/user';
 import styles from './UsersTable.module.scss';
@@ -5,6 +6,7 @@ import styles from './UsersTable.module.scss';
 type UsersTableProps = {
   users: User[];
   emptyMessage?: string;
+  onFilterClick?: () => void;
 };
 
 const DATE_FORMATTER = new Intl.DateTimeFormat('en-US', {
@@ -36,6 +38,7 @@ const COLUMNS = [
 export function UsersTable({
   users,
   emptyMessage = 'No users match the current filters.',
+  onFilterClick,
 }: UsersTableProps) {
   return (
     <div className={styles.scroll}>
@@ -45,7 +48,19 @@ export function UsersTable({
           <tr>
             {COLUMNS.map((label) => (
               <th key={label} scope="col" className={styles.th}>
-                {label}
+                <span className={styles.thInner}>
+                  {label}
+                  {onFilterClick ? (
+                    <button
+                      type="button"
+                      className={styles.filterButton}
+                      onClick={onFilterClick}
+                      aria-label={`Filter by ${label}`}
+                    >
+                      <Icon name="filter" size={16} />
+                    </button>
+                  ) : null}
+                </span>
               </th>
             ))}
             <th

@@ -1,6 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import {
+  FilterPanel,
+  type Filters,
+} from '@/components/users/FilterPanel/FilterPanel';
 import { Pagination } from '@/components/users/Pagination/Pagination';
 import { StatCard } from '@/components/users/StatCard/StatCard';
 import { UsersTable } from '@/components/users/UsersTable/UsersTable';
@@ -46,11 +50,14 @@ export function UsersView({ stats }: UsersViewProps) {
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(INITIAL_PER_PAGE);
+  const [filters, setFilters] = useState<Filters>({});
+  const [showFilters, setShowFilters] = useState(false);
+  const filterPopoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancelled = false;
     setError(null);
-    fetchUsers({ page, perPage })
+    fetchUsers({ page, perPage, ...filters })
       .then((response) => {
         if (!cancelled) setData(response);
       })
@@ -60,10 +67,43 @@ export function UsersView({ stats }: UsersViewProps) {
     return () => {
       cancelled = true;
     };
-  }, [page, perPage]);
+  }, [page, perPage, filters]);
+
+  useEffect(() => {
+    if (!showFilters) return;
+    function onKey(event: KeyboardEvent) {
+      if (event.key === 'Escape') setShowFilters(false);
+    }
+    function onClick(event: MouseEvent) {
+      if (
+        filterPopoverRef.current &&
+        !filterPopoverRef.current.contains(event.target as Node)
+      ) {
+        setShowFilters(false);
+      }
+    }
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onClick);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onClick);
+    };
+  }, [showFilters]);
 
   const handlePerPageChange = (next: number) => {
     setPerPage(next);
+    setPage(1);
+  };
+
+  const applyFilters = (next: Filters) => {
+    setFilters(next);
+    setShowFilters(false);
+    setPage(1);
+  };
+
+  const resetFilters = () => {
+    setFilters({});
+    setShowFilters(false);
     setPage(1);
   };
 
@@ -92,7 +132,22 @@ export function UsersView({ stats }: UsersViewProps) {
           <p className={styles.loading}>Loading users…</p>
         ) : (
           <>
-            <UsersTable users={data.users} />
+            <UsersTable
+              users={data.users}
+              onFilterClick={() => setShowFilters((prev) => !prev)}
+            />
+            {showFilters ? (
+              <div
+                ref={filterPopoverRef}
+                className={styles.filterPopover}
+              >
+                <FilterPanel
+                  initial={filters}
+                  onApply={applyFilters}
+                  onReset={resetFilters}
+                />
+              </div>
+            ) : null}
             <Pagination
               page={data.page}
               perPage={data.perPage}

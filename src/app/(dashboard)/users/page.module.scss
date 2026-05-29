@@ -27,9 +27,17 @@
 }
 
 .tableSection {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: v.$space-4;
+}
+
+.filterPopover {
+  position: absolute;
+  top: 60px;
+  left: v.$space-3;
+  z-index: v.$z-popover;
 }
 
 .loading,

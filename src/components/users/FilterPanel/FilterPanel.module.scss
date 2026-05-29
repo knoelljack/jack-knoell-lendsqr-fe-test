@@ -1,0 +1,90 @@
+@use '@/styles/variables' as v;
+@use '@/styles/mixins' as m;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+  width: 270px;
+  padding: v.$space-5;
+  background: v.$color-surface;
+  border: 1px solid v.$color-divider;
+  border-radius: v.$radius-sm;
+  box-shadow: v.$shadow-popover;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+}
+
+.label {
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-medium;
+  color: v.$color-text-strong;
+}
+
+.input,
+.select {
+  height: v.$control-height - 10px;
+  padding: 0 v.$space-3;
+  border: v.$input-border-width solid v.$color-border;
+  border-radius: v.$input-radius;
+  background: v.$color-surface;
+  font-family: inherit;
+  font-size: v.$font-size-sm;
+  color: v.$color-text-strong;
+
+  &::placeholder {
+    color: v.$color-text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: v.$color-primary;
+  }
+}
+
+.select {
+  appearance: none;
+  background-image: url('/icons/caret-down.svg');
+  background-repeat: no-repeat;
+  background-position: right v.$space-3 center;
+  background-size: 10px;
+  padding-right: v.$space-8;
+  cursor: pointer;
+
+  &:invalid {
+    color: v.$color-text-muted;
+  }
+}
+
+.dateWrap {
+  position: relative;
+}
+
+.dateWrap .input {
+  width: 100%;
+  padding-right: v.$space-8;
+}
+
+.dateIcon {
+  position: absolute;
+  top: 50%;
+  right: v.$space-3;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.actions {
+  display: flex;
+  gap: v.$space-3;
+  margin-top: v.$space-2;
+}
+
+.resetButton {
+  border: 1px solid v.$color-text-default;
+  color: v.$color-text-strong;
+  border-radius: v.$radius-md;
+}
