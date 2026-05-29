@@ -18,8 +18,8 @@
   }
 
   @include m.respond-to(lg) {
-    padding: 0 v.$space-12;
-    gap: v.$space-16;
+    padding: 0 v.$space-12 0 0;
+    gap: v.$space-12;
   }
 }
 
@@ -28,6 +28,11 @@
   align-items: center;
   gap: v.$space-4;
   flex-shrink: 0;
+
+  @include m.respond-to(lg) {
+    width: v.$sidebar-width;
+    padding-left: v.$space-8;
+  }
 }
 
 .logoLink {
@@ -70,7 +75,7 @@
 .search {
   display: none;
   flex: 1;
-  max-width: 400px;
+  max-width: 520px;
   height: 40px;
 
   @include m.respond-to(md) {

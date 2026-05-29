@@ -71,7 +71,7 @@ export function Topbar({ onMenuClick }: TopbarProps) {
             A
           </span>
           <span className={styles.profileName}>Adedeji</span>
-          <Icon name="chevron-down" size={10} />
+          <Icon name="chevron-down" size={20} />
         </button>
       </div>
     </header>
